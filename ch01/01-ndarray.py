@@ -14,7 +14,7 @@ print('x shape:', x.shape)  # 访问向量的形状
 
 y = x.reshape(3, 4)  # 改变一个张量的形状而不改变元素数量和元素值
 print('y:', y)
-print('y.numel():', y.numel())  # 返回张量中元素的总个数
+print('y.numel():', y.numel())  # number element:返回张量中元素的总个数
 
 z = torch.zeros(2, 3, 4)  # 创建一个张量，其中所有元素都设置为0
 print('z:', z)
@@ -37,19 +37,19 @@ print(torch.exp(x))
 
 X = torch.arange(12, dtype=torch.float32).reshape(3, 4)
 Y = torch.tensor([[2.0, 1, 4, 3], [1, 2, 3, 4], [4, 3, 2, 1]])
-print('cat操作 dim=0', torch.cat((X, Y), dim=0))
+print('cat操作 dim=0', torch.cat((X, Y), dim=0))  #* dim=0 是在第零维合并，在行拼接；dim=1 是列合并
 print('cat操作 dim=1', torch.cat((X, Y), dim=1))  # 连结（concatenate） ,将它们端到端堆叠以形成更大的张量。
 
 print('X == Y', X == Y)  # 通过 逻辑运算符 构建二元张量
 print('X < Y', X < Y)
 print('张量所有元素的和:', X.sum())  # 张量所有元素的和
 
-print('3.广播机制')
-a = torch.arange(3).reshape(3, 1)
-b = torch.arange(2).reshape(1, 2)
+print('3.广播机制') #两个张量形状不一样，可以用广播机制变得形状一样，再进行计算
+a = torch.arange(3).reshape(3, 1) #->(3,2)  就是把原本前一个直接复制，变成一个新的张量
+b = torch.arange(2).reshape(1, 2) #->(3,2)
 print('a:', a)
 print('b:', b)
-print('a + b:', a + b)  # 神奇的广播运算
+print('a + b:', a + b)  # 神奇的广播运算 
 
 print('4.索引和切片')
 X = torch.arange(12, dtype=torch.float32).reshape(3, 4)
